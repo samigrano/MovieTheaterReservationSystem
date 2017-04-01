@@ -1,9 +1,4 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 public class AdminMainWindow extends JFrame {
 
@@ -16,8 +11,7 @@ public class AdminMainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public AdminMainWindow() {
-		
-		
+		init();
 	}
 	
 	public void init() {

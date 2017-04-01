@@ -1,6 +1,3 @@
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
@@ -11,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 public class LoginWindow extends JFrame {
 
@@ -21,7 +17,7 @@ public class LoginWindow extends JFrame {
 	private JTextField userNameField;
 
 	public LoginWindow() {
-		
+		init();
 	}
 
 	public void init() {
@@ -59,13 +55,16 @@ public class LoginWindow extends JFrame {
 
 				
 				char[] input = passwordField.getPassword();
-				char[] correct = {'a','d','m','i','n'};
+				char[] admin = {'a','d','m','i','n'};
+				char[] user = {'v','i','e','r','a','s'};
 				
-				if (Arrays.equals(input, correct)) {
+				if (Arrays.equals(input, admin)) {
 					WindowHandler.changeToAdminMain();
 					loginFrame.dispose();
-					
-					
+				}
+				else if (Arrays.equals(input, user)) {
+					WindowHandler.changeToAdminMain();
+					loginFrame.dispose();
 				}
 			}
 		});
