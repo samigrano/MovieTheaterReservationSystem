@@ -7,6 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 public class AdminMainWindow extends JFrame {
 
+
 	private JFrame adminFrame;
 
 	
