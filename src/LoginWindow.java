@@ -15,6 +15,7 @@ public class LoginWindow extends JFrame {
 	private JFrame loginFrame;
 	private JPasswordField passwordField;
 	private JTextField userNameField;
+	private LoginHandler loginHandler = new LoginHandler();
 
 	public LoginWindow() {
 		init();
@@ -54,17 +55,19 @@ public class LoginWindow extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 
 				
-				char[] input = passwordField.getPassword();
+				char[] inputPass = passwordField.getPassword();
 				char[] admin = {'a','d','m','i','n'};
 				char[] user = {'v','i','e','r','a','s'};
 				
-				if (Arrays.equals(input, admin)) {
+				String inputUserName = userNameField.getText();
+				
+				if (Arrays.equals(inputPass, admin) && inputUserName.equals("admin")) {
 					WindowHandler.changeToAdminMain();
 					loginFrame.dispose();
 				}
-				else if (Arrays.equals(input, user)) {
-					WindowHandler.changeToAdminMain();
-					loginFrame.dispose();
+				else if (loginHandler.checkPassword(inputPass, inputUserName)) {
+					WindowHandler.changeToUserMainWindow();
+					System.out.println("Logged in as: "+inputUserName);
 				}
 			}
 		});
