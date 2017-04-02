@@ -7,13 +7,15 @@ public class WindowHandler extends JFrame {
 	
 	public static void main (String[] args) {
 		login.init();
+		login.setVisib(true);
 		
 		
 	}
 	
 	public static void changeToAdminMain() {
-		
+		login.setVisib(false);
 		adminMain.init();
+		adminMain.setVisib(true);
 	}
 	
 	

@@ -22,7 +22,7 @@ public class LoginWindow extends JFrame {
 
 	public void init() {
 		loginFrame = new JFrame();
-		loginFrame.setVisible(true);
+		loginFrame.setVisible(false);
 		loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginFrame.getContentPane().setLayout(null);
 
@@ -77,5 +77,10 @@ public class LoginWindow extends JFrame {
 		loginFrame.setBounds(100, 100, 720, 480);
 
 
+	}
+	
+	public void setVisib(Boolean visible) {
+		loginFrame.setVisible(visible);
+		loginFrame.setBounds(100, 100, 720, 480);
 	}
 }

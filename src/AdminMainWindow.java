@@ -12,16 +12,20 @@ public class AdminMainWindow extends JFrame {
 	 */
 	public AdminMainWindow() {
 		init();
+		
 	}
 	
 	public void init() {
 		adminFrame = new JFrame();
-		adminFrame.setVisible(true);
+		adminFrame.setVisible(false);
 		adminFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		adminFrame.getContentPane().setLayout(null);
 		adminFrame.setBounds(100, 100, 720, 480);
 	}
 	
-	
+	public void setVisib(Boolean visible) {
+		adminFrame.setBounds(100, 100, 720, 480);
+		adminFrame.setVisible(visible);
+	}
 
 }
