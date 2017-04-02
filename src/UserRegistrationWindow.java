@@ -24,7 +24,7 @@ public class UserRegistrationWindow {
 		initialize();
 	}
 
-	private void initialize() {
+	public void initialize() {
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -110,5 +110,10 @@ public class UserRegistrationWindow {
 		panel.add(lblSearchByUsername);
 
 		frame.setBounds(100, 100, 720, 480);
+	}
+	
+	public void setVisib(Boolean visible) {
+		frame.setBounds(100, 100, 720, 480);
+		frame.setVisible(visible);
 	}
 }
