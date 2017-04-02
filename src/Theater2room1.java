@@ -5,24 +5,14 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class UserMainWindow extends JFrame {
+public class Theater2room1 extends JFrame {
 
 	private JPanel contentPane;
-	private JFrame userFrame;
 
 	/**
 	 * Create the frame.
 	 */
-	public UserMainWindow() {
-		init();
-	}
-	
-	public void init(){
-		userFrame = new JFrame();
-		userFrame.setTitle("UserMainWindow");
-		userFrame.setVisible(false);
-		userFrame.setBounds(100, 100, 720, 480);
-		
+	public Theater2room1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -30,9 +20,5 @@ public class UserMainWindow extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 	}
-	
-	public void setVisib(Boolean visib) {
-		userFrame.setVisible(visib);
-		userFrame.setBounds(100, 100, 720, 480);
-	}
+
 }

@@ -22,6 +22,7 @@ public class MovieAddWindow {
 
 	private void initialize() {
 		frame = new JFrame();
+		frame.setTitle("MovieAddWindow");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.getContentPane().setLayout(null);

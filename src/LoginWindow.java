@@ -23,6 +23,7 @@ public class LoginWindow extends JFrame {
 
 	public void init() {
 		loginFrame = new JFrame();
+		loginFrame.setTitle("Login");
 		loginFrame.setVisible(false);
 		loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginFrame.getContentPane().setLayout(null);
