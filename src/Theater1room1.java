@@ -27,8 +27,9 @@ public class Theater1room1 extends JFrame {
 	private JButton confirm;
 	private static JTextField FS;
 	private static JTextField RS;
-	private int freeSeatNum = 100;
-	private int resSeatNum = 0;
+	private int freeSeatNum;
+	private int resSeatNum;
+//	private JButton[] button = new JButton[100];//
 	
 	public Theater1room1() {
 		init();
@@ -46,11 +47,13 @@ public class Theater1room1 extends JFrame {
 //////////////////GETTERS///////////////
 
 	public int getFreeSeats(){
-		return this.freeSeatNum;
+		int x = freeSeatNum;
+		return x;
 	}
 
 	public int getReservedSeats(){
-		return this.resSeatNum;
+		int x = resSeatNum;
+		return x;
 	}
 
 /////////////////////////////////////
@@ -62,7 +65,7 @@ public class Theater1room1 extends JFrame {
 		y++;
 		setFreeSeats(x);
 		setReservedSeats(y);
-		System.out.println(x + " , " + y);
+
 
 	}
 	
@@ -76,6 +79,8 @@ public class Theater1room1 extends JFrame {
 		contentPane.setLayout(null);
 		addLines();
 		addSeats();
+		setFreeSeats(100);
+		setReservedSeats(0);
 
 //////////////FREE SEATS/////////////////////////
 		
@@ -166,30 +171,47 @@ public class Theater1room1 extends JFrame {
 		contentPane.add(Line10);
 	}
 	
-	/*public void action(JButton seat){
-		seat1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				seat.setForeground(Color.RED);
-				changeSeatFreeToRes();
-			}
-		});
-	}*/
+
+	private class MyActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			((JButton)e.getSource()).setBackground(Color.RED);
+			changeSeatFreeToRes();
+			FS.setText(Integer.toString(getFreeSeats()));
+			RS.setText(Integer.toString(getReservedSeats()));
+			((JButton)e.getSource()).setEnabled(false);
+		}
+	}
 	
 	public void addSeats(){
+		
+
+///////////////////////////////T‰ll‰ saa kaikki napit toimimaan, mutta paikan m‰‰ritys hiukan hukas n‰in 9tunnin koodauksen j‰lkeen :D ///////////////////////////		
+//		int x = 50;
+//		int y = 10;
+//		int width = 50;
+//		int heigth = 50;
+//		
+//		
+//			for(int i=0; i<button.length; i++){
+//				button[i] = new JButton("1");
+//				button[i].setForeground(Color.BLACK);
+//				button[i].setBackground(Color.GREEN);
+//				button[i].setFont(new Font("Arial", Font.PLAIN, 9));
+//				button[i].setBounds(x, y, width, heigth);
+//				contentPane.add(button[i]);
+//				button[i].addActionListener(new MyActionListener());
+//		}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
+		
+		
+		
 		JButton seat1 = new JButton("1");
 		seat1.setForeground(Color.BLACK);
 		seat1.setBackground(Color.GREEN);
 		seat1.setFont(new Font("Arial", Font.PLAIN, 9));
 		seat1.setBounds(50, 10, 50, 50);
 		contentPane.add(seat1);
-		
-		seat1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				seat1.setBackground(Color.RED);
-				changeSeatFreeToRes();
-			}
-		});
-		
+		seat1.addActionListener(new MyActionListener());
 		
 		JButton seat2 = new JButton("2");
 		seat2.setForeground(Color.BLACK);
@@ -197,6 +219,7 @@ public class Theater1room1 extends JFrame {
 		seat2.setFont(new Font("Arial", Font.PLAIN, 9));
 		seat2.setBounds(100, 10, 50, 50);
 		contentPane.add(seat2);
+		seat2.addActionListener(new MyActionListener());
 		
 		JButton seat3 = new JButton("3");
 		seat3.setForeground(Color.BLACK);
