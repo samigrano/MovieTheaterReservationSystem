@@ -6,10 +6,13 @@ public class WindowHandler extends JFrame {
 	private static AdminMainWindow adminMain = new AdminMainWindow();
 	private static UserRegistrationWindow userReg = new UserRegistrationWindow();
 	private static UserMainWindow userMain =  new UserMainWindow();
+	private static Theater1room1 theater1r1 = new Theater1room1();
 	
 	public static void main (String[] args) {
+		theater1r1.init();
+		theater1r1.setVisible(true);
 		login.init();
-		login.setVisib(true);
+		login.setVisib(false);
 		//adminMain.init();
 		//adminMain.setVisib(true);
 		
@@ -38,6 +41,4 @@ public class WindowHandler extends JFrame {
 		userMain.setVisib(true);
 	}
 	
-	
-
 }

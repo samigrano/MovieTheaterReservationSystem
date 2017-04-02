@@ -20,21 +20,56 @@ import java.awt.event.InputMethodEvent;
 import javax.swing.SwingConstants;
 
 public class Theater1room1 extends JFrame {
-
+		
 	private JPanel contentPane;
-	private JButton seat41;
-	private ArrayList<JButton> freeSeats = new ArrayList<>();
-	private ArrayList<JButton> reservedSeats = new ArrayList<>();
-	private JTextField textField;
-	private JTextField textField_1;
-
-	/**
-	 * Create the frame.
-	 */
+	private JLabel freeSeats;
+	private JLabel reservedSeats;
+	private JButton confirm;
+	private static JTextField FS;
+	private static JTextField RS;
+	private int freeSeatNum = 100;
+	private int resSeatNum = 0;
+	
 	public Theater1room1() {
+		init();
+	}
+//////////////////SETTERS///////////////
+	
+	public void setFreeSeats(int x){
+		freeSeatNum = x;
+	}
+
+	public void setReservedSeats(int x){
+		resSeatNum = x;
+	}
+
+//////////////////GETTERS///////////////
+
+	public int getFreeSeats(){
+		return this.freeSeatNum;
+	}
+
+	public int getReservedSeats(){
+		return this.resSeatNum;
+	}
+
+/////////////////////////////////////
+
+	public void changeSeatFreeToRes(){
+		int x = getFreeSeats();
+		int y = getReservedSeats();
+		x--;
+		y++;
+		setFreeSeats(x);
+		setReservedSeats(y);
+		System.out.println(x + " , " + y);
+
+	}
+	
+	public void init(){		
 		setTitle("Theater1Room1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 636, 380);
+		setBounds(100, 100, 800, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -44,719 +79,759 @@ public class Theater1room1 extends JFrame {
 
 //////////////FREE SEATS/////////////////////////
 		
-		JLabel FreeSeats = new JLabel("Free seats");
-		FreeSeats.setBounds(483, 42, 76, 14);
-		contentPane.add(FreeSeats);
-				
-		textField = new JTextField(getFreeSeats(freeSeats));
-		textField.setBounds(483, 63, 46, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		freeSeats = new JLabel("Free seats");
+		freeSeats.setBounds(637, 60, 76, 14);
+		contentPane.add(freeSeats);
+		
+		FS = new JTextField();
+		FS.setBounds(637, 81, 46, 20);
+		contentPane.add(FS);
+		FS.setColumns(10);
+		FS.setText(Integer.toString(getFreeSeats()));
+		
 
 //////////////RESERVED SEATS//////////////////////
 		
-		JLabel ReservedSeats = new JLabel("Reserved seats");
-		ReservedSeats.setBounds(483, 118, 76, 14);
-		contentPane.add(ReservedSeats);
+		reservedSeats = new JLabel("Reserved seats");
+		reservedSeats.setBounds(637, 136, 76, 14);
+		contentPane.add(reservedSeats);
 		
-		textField_1 = new JTextField(getReservedSeats(reservedSeats));
-		textField_1.setBounds(483, 141, 46, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		RS = new JTextField();
+		RS.setBounds(637, 159, 46, 20);
+		contentPane.add(RS);
+		RS.setColumns(10);
+		RS.setText(Integer.toString(getReservedSeats()));
 		
 
 /////////////////////////////////////
-		JButton btnConfirm = new JButton("CONFIRM");
-		btnConfirm.setBounds(480, 194, 89, 23);
-		contentPane.add(btnConfirm);	
-	}
-	
-	public void setFreeSeats(){
 		
+		confirm = new JButton("CONFIRM");
+		confirm.setBounds(634, 206, 89, 23);
+		contentPane.add(confirm);	
+
 	}
 	
-	public void setReservedSeats(){
-		
-	}
-	
-	public int getFreeSeats(ArrayList<JButton> list){
-		int x = 0;
-		for(int i=0; i<list.size(); i++){
-			x++;
-		}
-		return x;
-	}
-	
-	public int getReservedSeats(ArrayList<JButton> list){
-		int x = 0;
-		for(int i=0; i<list.size(); i++){
-			x++;
-		}
-		return x;
-	}
+////////////////////////////////////////////	
 	
 	public void addLines(){
 		
 		JLabel Line1 = new JLabel("1");
 		Line1.setHorizontalAlignment(SwingConstants.CENTER);
-		Line1.setBounds(10, 18, 46, 14);
+		Line1.setBounds(10, 28, 46, 14);
 		contentPane.add(Line1);
 		
 		JLabel Line2 = new JLabel("2");
 		Line2.setHorizontalAlignment(SwingConstants.CENTER);
-		Line2.setBounds(10, 48, 46, 14);
+		Line2.setBounds(10, 78, 46, 14);
 		contentPane.add(Line2);
 		
 		JLabel Line3 = new JLabel("3");
 		Line3.setHorizontalAlignment(SwingConstants.CENTER);
-		Line3.setBounds(10, 78, 46, 14);
+		Line3.setBounds(10, 128, 46, 14);
 		contentPane.add(Line3);
 		
 		JLabel Line4 = new JLabel("4");
 		Line4.setHorizontalAlignment(SwingConstants.CENTER);
-		Line4.setBounds(10, 108, 46, 14);
+		Line4.setBounds(10, 178, 46, 14);
 		contentPane.add(Line4);
 		
 		JLabel Line5 = new JLabel("5");
 		Line5.setHorizontalAlignment(SwingConstants.CENTER);
-		Line5.setBounds(10, 138, 46, 14);
+		Line5.setBounds(10, 228, 46, 14);
 		contentPane.add(Line5);
 		
 		JLabel Line6 = new JLabel("6");
 		Line6.setHorizontalAlignment(SwingConstants.CENTER);
-		Line6.setBounds(10, 168, 46, 14);
+		Line6.setBounds(10, 278, 46, 14);
 		contentPane.add(Line6);
 		
 		JLabel Line7 = new JLabel("7");
 		Line7.setHorizontalAlignment(SwingConstants.CENTER);
-		Line7.setBounds(10, 198, 46, 14);
+		Line7.setBounds(10, 328, 46, 14);
 		contentPane.add(Line7);
 		
 		JLabel Line8 = new JLabel("8");
 		Line8.setHorizontalAlignment(SwingConstants.CENTER);
-		Line8.setBounds(10, 228, 46, 14);
+		Line8.setBounds(10, 378, 46, 14);
 		contentPane.add(Line8);
 		
 		JLabel Line9 = new JLabel("9");
 		Line9.setHorizontalAlignment(SwingConstants.CENTER);
-		Line9.setBounds(10, 258, 46, 14);
+		Line9.setBounds(10, 428, 46, 14);
 		contentPane.add(Line9);
 		
 		JLabel Line10 = new JLabel("10");
 		Line10.setHorizontalAlignment(SwingConstants.CENTER);
-		Line10.setBounds(10, 288, 46, 14);
+		Line10.setBounds(10, 478, 46, 14);
 		contentPane.add(Line10);
 	}
+	
+	/*public void action(JButton seat){
+		seat1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				seat.setForeground(Color.RED);
+				changeSeatFreeToRes();
+			}
+		});
+	}*/
 	
 	public void addSeats(){
 		JButton seat1 = new JButton("1");
 		seat1.setForeground(Color.BLACK);
-		seat1.setBackground(Color.BLACK);
-		seat1.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat1.setBounds(50, 11, 40, 30);
+		seat1.setBackground(Color.GREEN);
+		seat1.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat1.setBounds(50, 10, 50, 50);
 		contentPane.add(seat1);
+		
+		seat1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				seat1.setBackground(Color.RED);
+				changeSeatFreeToRes();
+			}
+		});
+		
+		
 		JButton seat2 = new JButton("2");
 		seat2.setForeground(Color.BLACK);
-		seat2.setBackground(Color.BLACK);
-		seat2.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat2.setBounds(90, 11, 40, 30);
+		seat2.setBackground(Color.GREEN);
+		seat2.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat2.setBounds(100, 10, 50, 50);
 		contentPane.add(seat2);
+		
 		JButton seat3 = new JButton("3");
 		seat3.setForeground(Color.BLACK);
-		seat3.setBackground(Color.BLACK);
-		seat3.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat3.setBounds(130, 11, 40, 30);
+		seat3.setBackground(Color.GREEN);
+		seat3.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat3.setBounds(150, 10, 50, 50);
 		contentPane.add(seat3);
+		
 		JButton seat4 = new JButton("4");
 		seat4.setForeground(Color.BLACK);
-		seat4.setBackground(Color.BLACK);
-		seat4.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat4.setBounds(170, 11, 40, 30);
+		seat4.setBackground(Color.GREEN);
+		seat4.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat4.setBounds(200, 10, 50, 50);
 		contentPane.add(seat4);
+		
 		JButton seat5 = new JButton("5");
 		seat5.setForeground(Color.BLACK);
-		seat5.setBackground(Color.BLACK);
-		seat5.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat5.setBounds(210, 11, 40, 30);
+		seat5.setBackground(Color.GREEN);
+		seat5.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat5.setBounds(250, 10, 50, 50);
 		contentPane.add(seat5);
+		
 		JButton seat6 = new JButton("6");
 		seat6.setForeground(Color.BLACK);
-		seat6.setBackground(Color.BLACK);
-		seat6.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat6.setBounds(250, 11, 40, 30);
+		seat6.setBackground(Color.GREEN);
+		seat6.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat6.setBounds(300, 10, 50, 50);
 		contentPane.add(seat6);
+		
 		JButton seat7 = new JButton("7");
 		seat7.setForeground(Color.BLACK);
-		seat7.setBackground(Color.BLACK);
-		seat7.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat7.setBounds(290, 11, 40, 30);
+		seat7.setBackground(Color.GREEN);
+		seat7.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat7.setBounds(350, 10, 50, 50);
 		contentPane.add(seat7);
+		
 		JButton seat8 = new JButton("8");
 		seat8.setForeground(Color.BLACK);
-		seat8.setBackground(Color.BLACK);
-		seat8.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat8.setBounds(330, 11, 40, 30);
+		seat8.setBackground(Color.GREEN);
+		seat8.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat8.setBounds(400, 10, 50, 50);
 		contentPane.add(seat8);
+		
 		JButton seat9 = new JButton("9");
 		seat9.setForeground(Color.BLACK);
-		seat9.setBackground(Color.BLACK);
-		seat9.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat9.setBounds(370, 11, 40, 30);
+		seat9.setBackground(Color.GREEN);
+		seat9.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat9.setBounds(450, 10, 50, 50);
 		contentPane.add(seat9);
+		
 		JButton seat10 = new JButton("10");
 		seat10.setForeground(Color.BLACK);
-		seat10.setBackground(Color.BLACK);
-		seat10.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat10.setBounds(410, 11, 40, 30);
+		seat10.setBackground(Color.GREEN);
+		seat10.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat10.setBounds(500, 10, 50, 50);
 		contentPane.add(seat10);
+		
+//////////////////// 11 - 20 ///////////////
 		
 		JButton seat11 = new JButton("11");
 		seat11.setForeground(Color.BLACK);
-		seat11.setBackground(Color.BLACK);
-		seat11.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat11.setBounds(50, 41, 40, 30);
+		seat11.setBackground(Color.GREEN);
+		seat11.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat11.setBounds(50, 60, 50, 50);
 		contentPane.add(seat11);
+		
 		JButton seat12 = new JButton("12");
 		seat12.setForeground(Color.BLACK);
-		seat12.setBackground(Color.BLACK);
-		seat12.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat12.setBounds(90, 41, 40, 30);
-		contentPane.add(seat12);		
+		seat12.setBackground(Color.GREEN);
+		seat12.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat12.setBounds(100, 60, 50, 50);
+		contentPane.add(seat12);
+		
 		JButton seat13 = new JButton("13");
 		seat13.setForeground(Color.BLACK);
-		seat13.setBackground(Color.BLACK);
-		seat13.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat13.setBounds(130, 41, 40, 30);
-		contentPane.add(seat13);		
+		seat13.setBackground(Color.GREEN);
+		seat13.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat13.setBounds(150, 60, 50, 50);
+		contentPane.add(seat13);
+		
 		JButton seat14 = new JButton("14");
 		seat14.setForeground(Color.BLACK);
-		seat14.setBackground(Color.BLACK);
-		seat14.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat14.setBounds(170, 41, 40, 30);
-		contentPane.add(seat14);		
+		seat14.setBackground(Color.GREEN);
+		seat14.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat14.setBounds(200, 60, 50, 50);
+		contentPane.add(seat14);
+		
 		JButton seat15 = new JButton("15");
 		seat15.setForeground(Color.BLACK);
-		seat15.setBackground(Color.BLACK);
-		seat15.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat15.setBounds(210, 41, 40, 30);
-		contentPane.add(seat15);		
+		seat15.setBackground(Color.GREEN);
+		seat15.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat15.setBounds(250, 60, 50, 50);
+		contentPane.add(seat15);
+		
 		JButton seat16 = new JButton("16");
 		seat16.setForeground(Color.BLACK);
-		seat16.setBackground(Color.BLACK);
-		seat16.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat16.setBounds(250, 41, 40, 30);
-		contentPane.add(seat16);		
+		seat16.setBackground(Color.GREEN);
+		seat16.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat16.setBounds(300, 60, 50, 50);
+		contentPane.add(seat16);
+		
 		JButton seat17 = new JButton("17");
 		seat17.setForeground(Color.BLACK);
-		seat17.setBackground(Color.BLACK);
-		seat17.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat17.setBounds(290, 41, 40, 30);
-		contentPane.add(seat17);		
+		seat17.setBackground(Color.GREEN);
+		seat17.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat17.setBounds(350, 60, 50, 50);
+		contentPane.add(seat17);
+		
 		JButton seat18 = new JButton("18");
 		seat18.setForeground(Color.BLACK);
-		seat18.setBackground(Color.BLACK);
-		seat18.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat18.setBounds(330, 41, 40, 30);
-		contentPane.add(seat18);		
+		seat18.setBackground(Color.GREEN);
+		seat18.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat18.setBounds(400, 60, 50, 50);
+		contentPane.add(seat18);
+		
 		JButton seat19 = new JButton("19");
 		seat19.setForeground(Color.BLACK);
-		seat19.setBackground(Color.BLACK);
-		seat19.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat19.setBounds(370, 41, 40, 30);
-		contentPane.add(seat19);		
+		seat19.setBackground(Color.GREEN);
+		seat19.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat19.setBounds(450, 60, 50, 50);
+		contentPane.add(seat19);
+		
 		JButton seat20 = new JButton("20");
 		seat20.setForeground(Color.BLACK);
-		seat20.setBackground(Color.BLACK);
-		seat20.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat20.setBounds(410, 41, 40, 30);
+		seat20.setBackground(Color.GREEN);
+		seat20.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat20.setBounds(500, 60, 50, 50);
 		contentPane.add(seat20);
+
+////////////////////// 21 - 30 ////////////////		
 		
 		JButton seat21 = new JButton("21");
 		seat21.setForeground(Color.BLACK);
-		seat21.setBackground(Color.BLACK);
-		seat21.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat21.setBounds(50, 71, 40, 30);
+		seat21.setBackground(Color.GREEN);
+		seat21.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat21.setBounds(50, 110, 50, 50);
 		contentPane.add(seat21);		
 		JButton seat22 = new JButton("22");
 		seat22.setForeground(Color.BLACK);
-		seat22.setBackground(Color.BLACK);
-		seat22.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat22.setBounds(90, 71, 40, 30);
-		contentPane.add(seat22);		
+		seat22.setBackground(Color.GREEN);
+		seat22.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat22.setBounds(100, 110, 50, 50);
+		contentPane.add(seat22);				
 		JButton seat23 = new JButton("23");
 		seat23.setForeground(Color.BLACK);
-		seat23.setBackground(Color.BLACK);
-		seat23.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat23.setBounds(130, 71, 40, 30);
-		contentPane.add(seat23);		
+		seat23.setBackground(Color.GREEN);
+		seat23.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat23.setBounds(150, 110, 50, 50);
+		contentPane.add(seat23);				
 		JButton seat24 = new JButton("24");
 		seat24.setForeground(Color.BLACK);
-		seat24.setBackground(Color.BLACK);
-		seat24.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat24.setBounds(170, 71, 40, 30);
+		seat24.setBackground(Color.GREEN);
+		seat24.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat24.setBounds(200, 110, 50, 50);
 		contentPane.add(seat24);		
 		JButton seat25 = new JButton("25");
 		seat25.setForeground(Color.BLACK);
-		seat25.setBackground(Color.BLACK);
-		seat25.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat25.setBounds(210, 71, 40, 30);
+		seat25.setBackground(Color.GREEN);
+		seat25.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat25.setBounds(250, 110, 50, 50);
 		contentPane.add(seat25);		
 		JButton seat26 = new JButton("26");
 		seat26.setForeground(Color.BLACK);
-		seat26.setBackground(Color.BLACK);
-		seat26.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat26.setBounds(250, 71, 40, 30);
+		seat26.setBackground(Color.GREEN);
+		seat26.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat26.setBounds(300, 110, 50, 50);
 		contentPane.add(seat26);		
 		JButton seat27 = new JButton("27");
 		seat27.setForeground(Color.BLACK);
-		seat27.setBackground(Color.BLACK);
-		seat27.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat27.setBounds(290, 71, 40, 30);
+		seat27.setBackground(Color.GREEN);
+		seat27.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat27.setBounds(350, 110, 50, 50);
 		contentPane.add(seat27);		
 		JButton seat28 = new JButton("28");
 		seat28.setForeground(Color.BLACK);
-		seat28.setBackground(Color.BLACK);
-		seat28.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat28.setBounds(330, 71, 40, 30);
+		seat28.setBackground(Color.GREEN);
+		seat28.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat28.setBounds(400, 110, 50, 50);
 		contentPane.add(seat28);		
 		JButton seat29 = new JButton("29");
 		seat29.setForeground(Color.BLACK);
-		seat29.setBackground(Color.BLACK);
-		seat29.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat29.setBounds(370, 71, 40, 30);
+		seat29.setBackground(Color.GREEN);
+		seat29.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat29.setBounds(450, 110, 50, 50);
 		contentPane.add(seat29);		
 		JButton seat30 = new JButton("30");
 		seat30.setForeground(Color.BLACK);
-		seat30.setBackground(Color.BLACK);
-		seat30.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat30.setBounds(410, 71, 40, 30);
+		seat30.setBackground(Color.GREEN);
+		seat30.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat30.setBounds(500, 110, 50, 50);
 		contentPane.add(seat30);
+		
+////////////////////// 31 - 40 ////////////////////////////		
 		
 		JButton seat31 = new JButton("31");
 		seat31.setForeground(Color.BLACK);
-		seat31.setBackground(Color.BLACK);
-		seat31.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat31.setBounds(50, 101, 40, 30);
+		seat31.setBackground(Color.GREEN);
+		seat31.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat31.setBounds(50, 160, 50, 50);
 		contentPane.add(seat31);		
 		JButton seat32 = new JButton("32");
 		seat32.setForeground(Color.BLACK);
-		seat32.setBackground(Color.BLACK);
-		seat32.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat32.setBounds(90, 101, 40, 30);
+		seat32.setBackground(Color.GREEN);
+		seat32.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat32.setBounds(100, 160, 50, 50);
 		contentPane.add(seat32);		
 		JButton seat33 = new JButton("33");
 		seat33.setForeground(Color.BLACK);
-		seat33.setBackground(Color.BLACK);
-		seat33.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat33.setBounds(130, 101, 40, 30);
+		seat33.setBackground(Color.GREEN);
+		seat33.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat33.setBounds(150, 160, 50, 50);
 		contentPane.add(seat33);		
 		JButton seat34 = new JButton("34");
 		seat34.setForeground(Color.BLACK);
-		seat34.setBackground(Color.BLACK);
-		seat34.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat34.setBounds(170, 101, 40, 30);
+		seat34.setBackground(Color.GREEN);
+		seat34.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat34.setBounds(200, 160, 50, 50);
 		contentPane.add(seat34);		
 		JButton seat35 = new JButton("35");
 		seat35.setForeground(Color.BLACK);
-		seat35.setBackground(Color.BLACK);
-		seat35.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat35.setBounds(210, 101, 40, 30);
+		seat35.setBackground(Color.GREEN);
+		seat35.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat35.setBounds(250, 160, 50, 50);
 		contentPane.add(seat35);		
 		JButton seat36 = new JButton("36");
 		seat36.setForeground(Color.BLACK);
-		seat36.setBackground(Color.BLACK);
-		seat36.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat36.setBounds(250, 101, 40, 30);
+		seat36.setBackground(Color.GREEN);
+		seat36.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat36.setBounds(300, 160, 50, 50);
 		contentPane.add(seat36);		
 		JButton seat37 = new JButton("37");
 		seat37.setForeground(Color.BLACK);
-		seat37.setBackground(Color.BLACK);
-		seat37.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat37.setBounds(290, 101, 40, 30);
+		seat37.setBackground(Color.GREEN);
+		seat37.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat37.setBounds(350, 160, 50, 50);
 		contentPane.add(seat37);		
 		JButton seat38 = new JButton("38");
 		seat38.setForeground(Color.BLACK);
-		seat38.setBackground(Color.BLACK);
-		seat38.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat38.setBounds(330, 101, 40, 30);
+		seat38.setBackground(Color.GREEN);
+		seat38.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat38.setBounds(400, 160, 50, 50);
 		contentPane.add(seat38);		
 		JButton seat39 = new JButton("39");
 		seat39.setForeground(Color.BLACK);
-		seat39.setBackground(Color.BLACK);
-		seat39.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat39.setBounds(370, 101, 40, 30);
+		seat39.setBackground(Color.GREEN);
+		seat39.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat39.setBounds(450, 160, 50, 50);
 		contentPane.add(seat39);		
 		JButton seat40 = new JButton("40");
 		seat40.setForeground(Color.BLACK);
-		seat40.setBackground(Color.BLACK);
-		seat40.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat40.setBounds(410, 101, 40, 30);
+		seat40.setBackground(Color.GREEN);
+		seat40.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat40.setBounds(500, 160, 50, 50);
 		contentPane.add(seat40);
+		
+////////////////////// 41 - 50 //////////////////////		
 		
 		JButton seat41 = new JButton("41");
 		seat41.setForeground(Color.BLACK);
-		seat41.setBackground(Color.BLACK);
-		seat41.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat41.setBounds(50, 131, 40, 30);
+		seat41.setBackground(Color.GREEN);
+		seat41.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat41.setBounds(50, 210, 50, 50);
 		contentPane.add(seat41);		
 		JButton seat42 = new JButton("42");
 		seat42.setForeground(Color.BLACK);
-		seat42.setBackground(Color.BLACK);
-		seat42.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat42.setBounds(90, 131, 40, 30);
+		seat42.setBackground(Color.GREEN);
+		seat42.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat42.setBounds(100, 210, 50, 50);
 		contentPane.add(seat42);		
 		JButton seat43 = new JButton("43");
 		seat43.setForeground(Color.BLACK);
-		seat43.setBackground(Color.BLACK);
-		seat43.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat43.setBounds(130, 131, 40, 30);
+		seat43.setBackground(Color.GREEN);
+		seat43.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat43.setBounds(150, 210, 50, 50);
 		contentPane.add(seat43);		
 		JButton seat44 = new JButton("44");
 		seat44.setForeground(Color.BLACK);
-		seat44.setBackground(Color.BLACK);
-		seat44.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat44.setBounds(170, 131, 40, 30);
+		seat44.setBackground(Color.GREEN);
+		seat44.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat44.setBounds(200, 210, 50, 50);
 		contentPane.add(seat44);		
 		JButton seat45 = new JButton("45");
 		seat45.setForeground(Color.BLACK);
-		seat45.setBackground(Color.BLACK);
-		seat45.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat45.setBounds(210, 131, 40, 30);
+		seat45.setBackground(Color.GREEN);
+		seat45.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat45.setBounds(250, 210, 50, 50);
 		contentPane.add(seat45);		
 		JButton seat46 = new JButton("46");
 		seat46.setForeground(Color.BLACK);
-		seat46.setBackground(Color.BLACK);
-		seat46.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat46.setBounds(250, 131, 40, 30);
+		seat46.setBackground(Color.GREEN);
+		seat46.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat46.setBounds(300, 210, 50, 50);
 		contentPane.add(seat46);		
 		JButton seat47 = new JButton("47");
 		seat47.setForeground(Color.BLACK);
-		seat47.setBackground(Color.BLACK);
-		seat47.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat47.setBounds(290, 131, 40, 30);
+		seat47.setBackground(Color.GREEN);
+		seat47.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat47.setBounds(350, 210, 50, 50);
 		contentPane.add(seat47);		
 		JButton seat48 = new JButton("48");
 		seat48.setForeground(Color.BLACK);
-		seat48.setBackground(Color.BLACK);
-		seat48.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat48.setBounds(330, 131, 40, 30);
+		seat48.setBackground(Color.GREEN);
+		seat48.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat48.setBounds(400, 210, 50, 50);
 		contentPane.add(seat48);		
 		JButton seat49 = new JButton("49");
 		seat49.setForeground(Color.BLACK);
-		seat49.setBackground(Color.BLACK);
-		seat49.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat49.setBounds(370, 131, 40, 30);
+		seat49.setBackground(Color.GREEN);
+		seat49.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat49.setBounds(450, 210, 50, 50);
 		contentPane.add(seat49);		
 		JButton seat50 = new JButton("50");
 		seat50.setForeground(Color.BLACK);
-		seat50.setBackground(Color.BLACK);
-		seat50.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat50.setBounds(410, 131, 40, 30);
+		seat50.setBackground(Color.GREEN);
+		seat50.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat50.setBounds(500, 210, 50, 50);
 		contentPane.add(seat50);
+
+////////////////////// 51 - 60 //////////////////////		
 		
 		JButton seat51 = new JButton("51");
 		seat51.setForeground(Color.BLACK);
-		seat51.setBackground(Color.BLACK);
-		seat51.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat51.setBounds(50, 161, 40, 30);
+		seat51.setBackground(Color.GREEN);
+		seat51.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat51.setBounds(50, 260, 50, 50);
 		contentPane.add(seat51);		
 		JButton seat52 = new JButton("52");
 		seat52.setForeground(Color.BLACK);
-		seat52.setBackground(Color.BLACK);
-		seat52.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat52.setBounds(90, 161, 40, 30);
+		seat52.setBackground(Color.GREEN);
+		seat52.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat52.setBounds(100, 260, 50, 50);
 		contentPane.add(seat52);		
 		JButton seat53 = new JButton("53");
 		seat53.setForeground(Color.BLACK);
-		seat53.setBackground(Color.BLACK);
-		seat53.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat53.setBounds(130, 161, 40, 30);
+		seat53.setBackground(Color.GREEN);
+		seat53.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat53.setBounds(150, 260, 50, 50);
 		contentPane.add(seat53);		
 		JButton seat54 = new JButton("54");
 		seat54.setForeground(Color.BLACK);
-		seat54.setBackground(Color.BLACK);
-		seat54.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat54.setBounds(170, 161, 40, 30);
+		seat54.setBackground(Color.GREEN);
+		seat54.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat54.setBounds(200, 260, 50, 50);
 		contentPane.add(seat54);		
 		JButton seat55 = new JButton("55");
 		seat55.setForeground(Color.BLACK);
-		seat55.setBackground(Color.BLACK);
-		seat55.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat55.setBounds(210, 161, 40, 30);
+		seat55.setBackground(Color.GREEN);
+		seat55.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat55.setBounds(250, 260, 50, 50);
 		contentPane.add(seat55);		
 		JButton seat56 = new JButton("56");
 		seat56.setForeground(Color.BLACK);
-		seat56.setBackground(Color.BLACK);
-		seat56.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat56.setBounds(250, 161, 40, 30);
+		seat56.setBackground(Color.GREEN);
+		seat56.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat56.setBounds(300, 260, 50, 50);
 		contentPane.add(seat56);		
 		JButton seat57 = new JButton("57");
 		seat57.setForeground(Color.BLACK);
-		seat57.setBackground(Color.BLACK);
-		seat57.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat57.setBounds(290, 161, 40, 30);
+		seat57.setBackground(Color.GREEN);
+		seat57.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat57.setBounds(350, 260, 50, 50);
 		contentPane.add(seat57);		
 		JButton seat58 = new JButton("58");
 		seat58.setForeground(Color.BLACK);
-		seat58.setBackground(Color.BLACK);
-		seat58.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat58.setBounds(330, 161, 40, 30);
+		seat58.setBackground(Color.GREEN);
+		seat58.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat58.setBounds(400, 260, 50, 50);
 		contentPane.add(seat58);		
 		JButton seat59 = new JButton("59");
 		seat59.setForeground(Color.BLACK);
-		seat59.setBackground(Color.BLACK);
-		seat59.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat59.setBounds(370, 161, 40, 30);
+		seat59.setBackground(Color.GREEN);
+		seat59.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat59.setBounds(450, 260, 50, 50);
 		contentPane.add(seat59);		
 		JButton seat60 = new JButton("60");
 		seat60.setForeground(Color.BLACK);
-		seat60.setBackground(Color.BLACK);
-		seat60.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat60.setBounds(410, 161, 40, 30);
+		seat60.setBackground(Color.GREEN);
+		seat60.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat60.setBounds(500, 260, 50, 50);
 		contentPane.add(seat60);
+
+////////////////////// 61 - 70 //////////////////////		
 		
 		JButton seat61 = new JButton("61");
 		seat61.setForeground(Color.BLACK);
-		seat61.setBackground(Color.BLACK);
-		seat61.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat61.setBounds(50, 191, 40, 30);
+		seat61.setBackground(Color.GREEN);
+		seat61.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat61.setBounds(50, 310, 50, 50);
 		contentPane.add(seat61);		
 		JButton seat62 = new JButton("62");
 		seat62.setForeground(Color.BLACK);
-		seat62.setBackground(Color.BLACK);
-		seat62.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat62.setBounds(90, 191, 40, 30);
+		seat62.setBackground(Color.GREEN);
+		seat62.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat62.setBounds(100, 310, 50, 50);
 		contentPane.add(seat62);		
 		JButton seat63 = new JButton("63");
 		seat63.setForeground(Color.BLACK);
-		seat63.setBackground(Color.BLACK);
-		seat63.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat63.setBounds(130, 191, 40, 30);
+		seat63.setBackground(Color.GREEN);
+		seat63.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat63.setBounds(150, 310, 50, 50);
 		contentPane.add(seat63);		
 		JButton seat64 = new JButton("64");
 		seat64.setForeground(Color.BLACK);
-		seat64.setBackground(Color.BLACK);
-		seat64.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat64.setBounds(170, 191, 40, 30);
+		seat64.setBackground(Color.GREEN);
+		seat64.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat64.setBounds(200, 310, 50, 50);
 		contentPane.add(seat64);		
 		JButton seat65 = new JButton("65");
 		seat65.setForeground(Color.BLACK);
-		seat65.setBackground(Color.BLACK);
-		seat65.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat65.setBounds(210, 191, 40, 30);
+		seat65.setBackground(Color.GREEN);
+		seat65.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat65.setBounds(250, 310, 50, 50);
 		contentPane.add(seat65);		
 		JButton seat66 = new JButton("66");
 		seat66.setForeground(Color.BLACK);
-		seat66.setBackground(Color.BLACK);
-		seat66.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat66.setBounds(250, 191, 40, 30);
+		seat66.setBackground(Color.GREEN);
+		seat66.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat66.setBounds(300, 310, 50, 50);
 		contentPane.add(seat66);		
 		JButton seat67 = new JButton("67");
 		seat67.setForeground(Color.BLACK);
-		seat67.setBackground(Color.BLACK);
-		seat67.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat67.setBounds(290, 191, 40, 30);
+		seat67.setBackground(Color.GREEN);
+		seat67.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat67.setBounds(350, 310, 50, 50);
 		contentPane.add(seat67);		
 		JButton seat68 = new JButton("68");
 		seat68.setForeground(Color.BLACK);
-		seat68.setBackground(Color.BLACK);
-		seat68.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat68.setBounds(330, 191, 40, 30);
+		seat68.setBackground(Color.GREEN);
+		seat68.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat68.setBounds(400, 310, 50, 50);
 		contentPane.add(seat68);		
 		JButton seat69 = new JButton("69");
 		seat69.setForeground(Color.BLACK);
-		seat69.setBackground(Color.BLACK);
-		seat69.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat69.setBounds(370, 191, 40, 30);
+		seat69.setBackground(Color.GREEN);
+		seat69.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat69.setBounds(450, 310, 50, 50);
 		contentPane.add(seat69);		
 		JButton seat70 = new JButton("70");
 		seat70.setForeground(Color.BLACK);
-		seat70.setBackground(Color.BLACK);
-		seat70.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat70.setBounds(410, 191, 40, 30);
+		seat70.setBackground(Color.GREEN);
+		seat70.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat70.setBounds(500, 310, 50, 50);
 		contentPane.add(seat70);
+
+////////////////////// 61 - 70 //////////////////////		
 		
 		JButton seat71 = new JButton("71");
 		seat71.setForeground(Color.BLACK);
-		seat71.setBackground(Color.BLACK);
-		seat71.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat71.setBounds(50, 221, 40, 30);
+		seat71.setBackground(Color.GREEN);
+		seat71.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat71.setBounds(50, 360, 50, 50);
 		contentPane.add(seat71);		
 		JButton seat72 = new JButton("72");
 		seat72.setForeground(Color.BLACK);
-		seat72.setBackground(Color.BLACK);
-		seat72.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat72.setBounds(90, 221, 40, 30);
+		seat72.setBackground(Color.GREEN);
+		seat72.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat72.setBounds(100, 360, 50, 50);
 		contentPane.add(seat72);		
 		JButton seat73 = new JButton("73");
 		seat73.setForeground(Color.BLACK);
-		seat73.setBackground(Color.BLACK);
-		seat73.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat73.setBounds(130, 221, 40, 30);
+		seat73.setBackground(Color.GREEN);
+		seat73.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat73.setBounds(150, 360, 50, 50);
 		contentPane.add(seat73);		
 		JButton seat74 = new JButton("74");
 		seat74.setForeground(Color.BLACK);
-		seat74.setBackground(Color.BLACK);
-		seat74.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat74.setBounds(170, 221, 40, 30);
+		seat74.setBackground(Color.GREEN);
+		seat74.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat74.setBounds(200, 360, 50, 50);
 		contentPane.add(seat74);		
 		JButton seat75 = new JButton("75");
 		seat75.setForeground(Color.BLACK);
-		seat75.setBackground(Color.BLACK);
-		seat75.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat75.setBounds(210, 221, 40, 30);
+		seat75.setBackground(Color.GREEN);
+		seat75.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat75.setBounds(250, 360, 50, 50);
 		contentPane.add(seat75);		
 		JButton seat76 = new JButton("76");
 		seat76.setForeground(Color.BLACK);
-		seat76.setBackground(Color.BLACK);
-		seat76.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat76.setBounds(250, 221, 40, 30);
+		seat76.setBackground(Color.GREEN);
+		seat76.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat76.setBounds(300, 360, 50, 50);
 		contentPane.add(seat76);	
 		JButton seat77 = new JButton("77");
 		seat77.setForeground(Color.BLACK);
-		seat77.setBackground(Color.BLACK);
-		seat77.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat77.setBounds(290, 221, 40, 30);
+		seat77.setBackground(Color.GREEN);
+		seat77.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat77.setBounds(350, 360, 50, 50);
 		contentPane.add(seat77);		
 		JButton seat78 = new JButton("78");
 		seat78.setForeground(Color.BLACK);
-		seat78.setBackground(Color.BLACK);
-		seat78.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat78.setBounds(330, 221, 40, 30);
+		seat78.setBackground(Color.GREEN);
+		seat78.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat78.setBounds(400, 360, 50, 50);
 		contentPane.add(seat78);		
 		JButton seat79 = new JButton("79");
 		seat79.setForeground(Color.BLACK);
-		seat79.setBackground(Color.BLACK);
-		seat79.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat79.setBounds(370, 221, 40, 30);
+		seat79.setBackground(Color.GREEN);
+		seat79.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat79.setBounds(450, 360, 50, 50);
 		contentPane.add(seat79);		
 		JButton seat80 = new JButton("80");
 		seat80.setForeground(Color.BLACK);
-		seat80.setBackground(Color.BLACK);
-		seat80.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat80.setBounds(410, 221, 40, 30);
+		seat80.setBackground(Color.GREEN);
+		seat80.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat80.setBounds(500, 360, 50, 50);
 		contentPane.add(seat80);
+
+////////////////////// 81 - 90 //////////////////////		
 		
 		JButton seat81 = new JButton("81");
 		seat81.setForeground(Color.BLACK);
-		seat81.setBackground(Color.BLACK);
-		seat81.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat81.setBounds(50, 251, 40, 30);
+		seat81.setBackground(Color.GREEN);
+		seat81.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat81.setBounds(50, 410, 50, 50);
 		contentPane.add(seat81);		
 		JButton seat82 = new JButton("82");
+		seat82.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		seat82.setForeground(Color.BLACK);
-		seat82.setBackground(Color.BLACK);
-		seat82.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat82.setBounds(90, 251, 40, 30);
+		seat82.setBackground(Color.GREEN);
+		seat82.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat82.setBounds(100, 410, 50, 50);
 		contentPane.add(seat82);		
 		JButton seat83 = new JButton("83");
 		seat83.setForeground(Color.BLACK);
-		seat83.setBackground(Color.BLACK);
-		seat83.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat83.setBounds(130, 251, 40, 30);
+		seat83.setBackground(Color.GREEN);
+		seat83.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat83.setBounds(150, 410, 50, 50);
 		contentPane.add(seat83);		
 		JButton seat84 = new JButton("84");
 		seat84.setForeground(Color.BLACK);
-		seat84.setBackground(Color.BLACK);
-		seat84.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat84.setBounds(170, 251, 40, 30);
+		seat84.setBackground(Color.GREEN);
+		seat84.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat84.setBounds(200, 410, 50, 50);
 		contentPane.add(seat84);		
 		JButton seat85 = new JButton("85");
 		seat85.setForeground(Color.BLACK);
-		seat85.setBackground(Color.BLACK);
-		seat85.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat85.setBounds(210, 251, 40, 30);
+		seat85.setBackground(Color.GREEN);
+		seat85.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat85.setBounds(250, 410, 50, 50);
 		contentPane.add(seat85);		
 		JButton seat86 = new JButton("86");
 		seat86.setForeground(Color.BLACK);
-		seat86.setBackground(Color.BLACK);
-		seat86.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat86.setBounds(250, 251, 40, 30);
+		seat86.setBackground(Color.GREEN);
+		seat86.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat86.setBounds(300, 410, 50, 50);
 		contentPane.add(seat86);		
 		JButton seat87 = new JButton("87");
 		seat87.setForeground(Color.BLACK);
-		seat87.setBackground(Color.BLACK);
-		seat87.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat87.setBounds(290, 251, 40, 30);
+		seat87.setBackground(Color.GREEN);
+		seat87.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat87.setBounds(350, 410, 50, 50);
 		contentPane.add(seat87);		
 		JButton seat88 = new JButton("88");
 		seat88.setForeground(Color.BLACK);
-		seat88.setBackground(Color.BLACK);
-		seat88.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat88.setBounds(330, 251, 40, 30);
+		seat88.setBackground(Color.GREEN);
+		seat88.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat88.setBounds(400, 410, 50, 50);
 		contentPane.add(seat88);		
 		JButton seat89 = new JButton("89");
 		seat89.setForeground(Color.BLACK);
-		seat89.setBackground(Color.BLACK);
-		seat89.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat89.setBounds(370, 251, 40, 30);
+		seat89.setBackground(Color.GREEN);
+		seat89.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat89.setBounds(450, 410, 50, 50);
 		contentPane.add(seat89);		
 		JButton seat90 = new JButton("90");
 		seat90.setForeground(Color.BLACK);
-		seat90.setBackground(Color.BLACK);
-		seat90.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat90.setBounds(410, 251, 40, 30);
+		seat90.setBackground(Color.GREEN);
+		seat90.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat90.setBounds(500, 410, 50, 50);
 		contentPane.add(seat90);
+
+////////////////////// 91 - 100 //////////////////////		
 		
 		JButton seat91 = new JButton("91");
 		seat91.setForeground(Color.BLACK);
-		seat91.setBackground(Color.BLACK);
-		seat91.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat91.setBounds(50, 281, 40, 30);
+		seat91.setBackground(Color.GREEN);
+		seat91.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat91.setBounds(50, 460, 50, 50);
 		contentPane.add(seat91);		
 		JButton seat92 = new JButton("92");
 		seat92.setForeground(Color.BLACK);
-		seat92.setBackground(Color.BLACK);
-		seat92.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat92.setBounds(90, 281, 40, 30);
+		seat92.setBackground(Color.GREEN);
+		seat92.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat92.setBounds(100, 460, 50, 50);
 		contentPane.add(seat92);		
 		JButton seat93 = new JButton("93");
 		seat93.setForeground(Color.BLACK);
-		seat93.setBackground(Color.BLACK);
-		seat93.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat93.setBounds(130, 281, 40, 30);
+		seat93.setBackground(Color.GREEN);
+		seat93.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat93.setBounds(150, 460, 50, 50);
 		contentPane.add(seat93);	
 		JButton seat94 = new JButton("94");
 		seat94.setForeground(Color.BLACK);
-		seat94.setBackground(Color.BLACK);
-		seat94.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat94.setBounds(170, 281, 40, 30);
+		seat94.setBackground(Color.GREEN);
+		seat94.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat94.setBounds(200, 460, 50, 50);
 		contentPane.add(seat94);		
 		JButton seat95 = new JButton("95");
 		seat95.setForeground(Color.BLACK);
-		seat95.setBackground(Color.BLACK);
-		seat95.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat95.setBounds(210, 281, 40, 30);
+		seat95.setBackground(Color.GREEN);
+		seat95.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat95.setBounds(250, 460, 50, 50);
 		contentPane.add(seat95);		
 		JButton seat96 = new JButton("96");
 		seat96.setForeground(Color.BLACK);
-		seat96.setBackground(Color.BLACK);
-		seat96.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat96.setBounds(250, 281, 40, 30);
+		seat96.setBackground(Color.GREEN);
+		seat96.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat96.setBounds(300, 460, 50, 50);
 		contentPane.add(seat96);		
 		JButton seat97 = new JButton("97");
 		seat97.setForeground(Color.BLACK);
-		seat97.setBackground(Color.BLACK);
-		seat97.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat97.setBounds(290, 281, 40, 30);
+		seat97.setBackground(Color.GREEN);
+		seat97.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat97.setBounds(350, 460, 50, 50);
 		contentPane.add(seat97);		
 		JButton seat98 = new JButton("98");
 		seat98.setForeground(Color.BLACK);
-		seat98.setBackground(Color.BLACK);
-		seat98.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat98.setBounds(330, 281, 40, 30);
+		seat98.setBackground(Color.GREEN);
+		seat98.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat98.setBounds(400, 460, 50, 50);
 		contentPane.add(seat98);		
 		JButton seat99 = new JButton("99");
 		seat99.setForeground(Color.BLACK);
-		seat99.setBackground(Color.BLACK);
-		seat99.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat99.setBounds(370, 281, 40, 30);
+		seat99.setBackground(Color.GREEN);
+		seat99.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat99.setBounds(450, 460, 50, 50);
 		contentPane.add(seat99);		
 		JButton seat100 = new JButton("100");
 		seat100.setForeground(Color.BLACK);
-		seat100.setBackground(Color.BLACK);
-		seat100.setFont(new Font("Arial", Font.PLAIN, 8));
-		seat100.setBounds(410, 281, 40, 30);
+		seat100.setBackground(Color.GREEN);
+		seat100.setFont(new Font("Arial", Font.PLAIN, 9));
+		seat100.setBounds(500, 460, 50, 50);
 		contentPane.add(seat100);
 	}
 }
