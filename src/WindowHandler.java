@@ -9,10 +9,8 @@ public class WindowHandler extends JFrame {
 	private static Theater1room1 theater1r1 = new Theater1room1();
 	
 	public static void main (String[] args) {
-		theater1r1.init();
-		theater1r1.setVisible(true);
 		login.init();
-		login.setVisib(false);
+		login.setVisib(true);
 		//adminMain.init();
 		//adminMain.setVisib(true);
 		
@@ -39,6 +37,8 @@ public class WindowHandler extends JFrame {
 		adminMain.setVisib(false);
 		userMain.init();
 		userMain.setVisib(true);
+		theater1r1.init();
+		theater1r1.setVisible(true);
 	}
 	
 }
