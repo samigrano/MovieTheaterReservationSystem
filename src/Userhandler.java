@@ -3,9 +3,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class Userhandler {
 
+	static ArrayList<User> users = new ArrayList<>();
+	
 	public static void serialize (User user) {
 
 		try {
@@ -44,5 +47,41 @@ public class Userhandler {
 		return temp;
 		
 		
+	}
+	
+	public static void addUser(User user) {
+		deSerializeMovieList();
+		users.add(user);
+	}
+	
+	public static void serializeUsersList() {
+		FileOutputStream fileOut;
+		try {
+			fileOut = new FileOutputStream("allUsers"+".ser");
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			out.writeObject(users);
+			out.close();
+			fileOut.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public static void deSerializeMovieList() {
+		try {
+			FileInputStream fileIn = new FileInputStream("allUsers"+".ser");
+			ObjectInputStream in = new ObjectInputStream(fileIn);
+			users = (ArrayList<User>) in.readObject();
+			in.close();
+			fileIn.close();
+		}catch(IOException i) {
+			System.out.println("The file is not yet created.");
+
+		}catch(ClassNotFoundException c) {
+
+			c.printStackTrace();
+
+		}
 	}
 }
