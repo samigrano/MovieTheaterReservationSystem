@@ -59,8 +59,9 @@ public class MovieHandler {
 	}
 
 	public static void addMovie(Movie movie) {
-		movies.add(movie);
 		serializeMovieList();
+		movies.add(movie);
+		
 	}
 
 	public static void serializeMovieList() {
