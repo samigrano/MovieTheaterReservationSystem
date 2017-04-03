@@ -23,6 +23,7 @@ public class MovieAddWindow {
 	private JTextField min;
 
 	public MovieAddWindow() {
+		MovieHandler.deSerializeMovieList();
 		initialize();
 	}
 
@@ -79,6 +80,8 @@ public class MovieAddWindow {
 				day.setText("");
 				hour.setText("");
 				min.setText("");
+				
+				MovieHandler.addMovie(movie);
 				
 			}
 		});
@@ -191,4 +194,5 @@ public class MovieAddWindow {
 		frame.setVisible(visib);
 		frame.setBounds(100, 100, 720, 480);
 	}
+	
 }

@@ -7,13 +7,15 @@ public class WindowHandler extends JFrame {
 	private static UserRegistrationWindow userReg = new UserRegistrationWindow();
 	private static UserMainWindow userMain =  new UserMainWindow();
 	private static Theater1room1 theater1r1 = new Theater1room1();
+	private static MovieAddWindow addMovie = new MovieAddWindow();
 	
 	public static void main (String[] args) {
-		login.init();
-		login.setVisib(true);
+		//login.init();
+		//login.setVisib(true);
 		//adminMain.init();
 		//adminMain.setVisib(true);
-		
+		addMovie.initialize();
+		addMovie.setVisib(true);
 	}
 	
 	public static void changeToAdminMain() {
