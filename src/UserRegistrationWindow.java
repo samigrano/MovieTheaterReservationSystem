@@ -67,6 +67,7 @@ public class UserRegistrationWindow {
 				usernameField.setText("");
 				passwordField.setText("");
 				nameField.setText("");
+				Userhandler.addUser(user);
 			}
 		});
 		btnRegister.setBounds(10, 233, 91, 23);

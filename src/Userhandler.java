@@ -52,6 +52,7 @@ public class Userhandler {
 	public static void addUser(User user) {
 		deSerializeMovieList();
 		users.add(user);
+		serializeUsersList();
 	}
 	
 	public static void serializeUsersList() {
