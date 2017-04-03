@@ -50,7 +50,7 @@ public class Userhandler {
 	}
 	
 	public static void addUser(User user) {
-		deSerializeMovieList();
+		deSerializeUsersList();
 		users.add(user);
 		serializeUsersList();
 	}
@@ -69,7 +69,7 @@ public class Userhandler {
 		}	
 	}
 	
-	public static void deSerializeMovieList() {
+	public static void deSerializeUsersList() {
 		try {
 			FileInputStream fileIn = new FileInputStream("allUsers"+".ser");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
