@@ -28,7 +28,7 @@ public class UserRegistrationWindow {
 		frame = new JFrame();
 		frame.setTitle("UserRegistrationWindow");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+		frame.setVisible(false);
 		frame.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();

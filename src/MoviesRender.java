@@ -12,15 +12,14 @@ public class MoviesRender {
 
 	private JFrame frame;
 
-	/**
-	 * Create the application.
-	 */
+
 	public MoviesRender() {
 		//initialize();
 	}
 
+
 	/**
-	 * Initialize the contents of the frame.
+	 * @wbp.parser.entryPoint
 	 */
 	public void initialize() {
 		frame = new JFrame();
