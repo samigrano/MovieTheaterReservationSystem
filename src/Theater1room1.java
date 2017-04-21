@@ -20,7 +20,7 @@ import java.awt.event.InputMethodEvent;
 import javax.swing.SwingConstants;
 
 public class Theater1room1 extends JFrame {
-		
+	static ArrayList<TheaterSeatButton> seatButtons = new ArrayList<>();	
 	private JPanel contentPane;
 	private JLabel freeSeats;
 	private JLabel reservedSeats;
@@ -79,7 +79,8 @@ public class Theater1room1 extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		addLines();
-		addSeats();
+		//addSeats();
+		addSeatsLoop();
 		setFreeSeats(100);
 		setReservedSeats(0);
 
@@ -200,6 +201,53 @@ public class Theater1room1 extends JFrame {
 		}
 	}
 	
+	public void addSeatsLoop() {
+		//1-10
+		int j = 50;
+		for (int i = 1; i < 11; i++) {
+			TheaterSeatButton s = new TheaterSeatButton(i+"");
+			s.addActionListener(new MyActionListener());
+			seatButtons.add(s);
+			contentPane.add(s);
+			s.setBounds(j, 10, 50, 50);
+			j += 50;
+		}
+		
+		//11-20
+		int k = 50;
+		for (int i = 11; i < 21; i++) {
+			TheaterSeatButton s = new TheaterSeatButton(i+"");
+			s.addActionListener(new MyActionListener());
+			seatButtons.add(s);
+			contentPane.add(s);
+			s.setBounds(k, 60, 50, 50);
+			k += 50;
+		}
+		
+		//21-30
+		int l = 50;
+		for (int i = 21; i < 31; i++) {
+			TheaterSeatButton s = new TheaterSeatButton(i+"");
+			s.addActionListener(new MyActionListener());
+			seatButtons.add(s);
+			contentPane.add(s);
+			s.setBounds(l, 110, 50, 50);
+			l += 50;
+		}
+		
+		//31 - 40
+		int m = 50;
+		for (int i = 31; i < 41; i++) {
+			TheaterSeatButton s = new TheaterSeatButton(i+"");
+			s.addActionListener(new MyActionListener());
+			seatButtons.add(s);
+			contentPane.add(s);
+			s.setBounds(m, 160, 50, 50);
+			m += 50;
+		}
+
+	}
+	
 	public void addSeats(){
 		
 
@@ -223,22 +271,29 @@ public class Theater1room1 extends JFrame {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////		
 		
 		
+		TheaterSeatButton b1 = new TheaterSeatButton("1");
+		contentPane.add(b1);
+		b1.setBounds(50, 10, 50, 50);
 		
-		JButton seat1 = new JButton("1");
-		seat1.setForeground(Color.BLACK);
-		seat1.setBackground(Color.GREEN);
-		seat1.setFont(new Font("Arial", Font.PLAIN, 9));
-		seat1.setBounds(50, 10, 50, 50);
-		contentPane.add(seat1);		
-		seat1.addActionListener(new MyActionListener());
+		TheaterSeatButton b2 = new TheaterSeatButton("2");
+		contentPane.add(b2);
+		b2.setBounds(100, 10, 50, 50);
 		
-		JButton seat2 = new JButton("2");
-		seat2.setForeground(Color.BLACK);
-		seat2.setBackground(Color.GREEN);
-		seat2.setFont(new Font("Arial", Font.PLAIN, 9));
-		seat2.setBounds(100, 10, 50, 50);
-		contentPane.add(seat2);
-		seat2.addActionListener(new MyActionListener());
+//		JButton seat1 = new JButton("1");
+//		seat1.setForeground(Color.BLACK);
+//		seat1.setBackground(Color.GREEN);
+//		seat1.setFont(new Font("Arial", Font.PLAIN, 9));
+//		seat1.setBounds(50, 10, 50, 50);
+//		contentPane.add(seat1);		
+//		seat1.addActionListener(new MyActionListener());
+		
+//		JButton seat2 = new JButton("2");
+//		seat2.setForeground(Color.BLACK);
+//		seat2.setBackground(Color.GREEN);
+//		seat2.setFont(new Font("Arial", Font.PLAIN, 9));
+//		seat2.setBounds(100, 10, 50, 50);
+//		contentPane.add(seat2);
+//		seat2.addActionListener(new MyActionListener());
 		
 		JButton seat3 = new JButton("3");
 		seat3.setForeground(Color.BLACK);
