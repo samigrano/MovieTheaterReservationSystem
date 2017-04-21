@@ -69,6 +69,8 @@ public class LoginWindow extends JFrame {
 				else if (loginHandler.checkPassword(inputPass, inputUserName)) {
 					WindowHandler.changeToUserMainWindow();
 					System.out.println("Logged in as: "+inputUserName);
+					LoginHandler.setLoggedAs(inputUserName);
+					WindowHandler.setReservationUserName(inputUserName);
 				}
 			}
 		});

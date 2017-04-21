@@ -195,6 +195,8 @@ public class Theater1room1 extends JFrame {
 			FS.setText(Integer.toString(getFreeSeats()));
 			RS.setText(Integer.toString(getReservedSeats()));
 			((JButton)e.getSource()).setEnabled(false);
+			
+			
 		}
 	}
 	

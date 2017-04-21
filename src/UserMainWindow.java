@@ -8,10 +8,15 @@ import javax.swing.JTextField;
 import javax.swing.JEditorPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextPane;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
+
 import javax.swing.JList;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JFormattedTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UserMainWindow {
 
@@ -96,14 +101,30 @@ public class UserMainWindow {
 		
 		
 		JButton movie1Button = new JButton("New button");
+		movie1Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				WindowHandler.setRervationMovieName(MovieHandler.movies.get(0).getMovieName());
+				WindowHandler.setReservationTheaterNum(MovieHandler.movies.get(0).getTheaterNum());
+				WindowHandler.setReservationRoomNum(MovieHandler.movies.get(0).getRoomNum());
+				WindowHandler.changeToTheater1Room1();
+			}
+		});
 		movie1Button.setBounds(10, 122, 200, 23);
 		userFrame.getContentPane().add(movie1Button);
 		
 		JButton movie2Button = new JButton("New button");
+		movie2Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		movie2Button.setBounds(255, 122, 200, 23);
 		userFrame.getContentPane().add(movie2Button);
 		
 		JButton movie3Button = new JButton("New button");
+		movie3Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		movie3Button.setBounds(502, 122, 200, 23);
 		userFrame.getContentPane().add(movie3Button);
 		
