@@ -1114,22 +1114,12 @@ public class Theater1room1 extends JFrame {
 		System.out.println("Checking reserved seats");
 		try {
 			String currentMovie = Reservation.moviedas;
-			System.out.println(currentMovie);
 			for (int i = 0; i < ReservationHandler.reservations.size(); i++) {
-				System.out.println(ReservationHandler.reservations.get(i).getMovieName());
 				if (ReservationHandler.reservations.get(i).getMovieName().equals(currentMovie)) {
 					Reservation temp = ReservationHandler.reservations.get(i);
-					System.out.println(temp.getSessionUserName());
-					System.out.println(temp.seatNumbers.size());
 					for (int j = 0; j < temp.seatNumbers.size(); j++) {
-						System.out.println("PASDKA");
-						System.out.println(temp.seatNumbers.get(j));
-						
-						
 						int click = temp.seatNumbers.get(j);
-						System.out.println(click);
 						seatButtons.get(click-1).doClick();
-						
 					}
 				}
 			}
