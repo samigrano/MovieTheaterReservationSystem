@@ -26,8 +26,8 @@ public class UserRegistrationWindow {
 
 	public void initialize() {
 		frame = new JFrame();
-		frame.setTitle("UserRegistrationWindow");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("UserRegistrationWindow");
 		frame.setVisible(false);
 		frame.getContentPane().setLayout(null);
 
@@ -110,12 +110,24 @@ public class UserRegistrationWindow {
 		JLabel lblSearchByUsername = new JLabel("Search by username");
 		lblSearchByUsername.setBounds(350, 29, 140, 14);
 		panel.add(lblSearchByUsername);
+		
+		JButton btnNewButton = new JButton("Close window");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				closeWindow();
+			}
+		});
+		btnNewButton.setBounds(10, 403, 140, 23);
+		panel.add(btnNewButton);
 
 		frame.setBounds(100, 100, 720, 480);
 	}
-	
+	public void closeWindow(){
+		WindowHandler.closeUserRegWindow();
+		AdminMainWindow.setUserRegBtnTrue();
+	}
 	public void setVisib(Boolean visible) {
-		frame.setBounds(100, 100, 720, 480);
+		frame.setBounds(100, 300, 720, 480);
 		frame.setVisible(visible);
 	}
 }

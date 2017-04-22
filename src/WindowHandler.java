@@ -18,27 +18,24 @@ public class WindowHandler extends JFrame {
 		login.setVisib(true);
 		//adminMain.init();
 		//adminMain.setVisib(true);
-		//addMovie.initialize();
-		//addMovie.setVisib(true);
 		//userMain.initialize();
 		//addMovie.setVisib(true);
 		
 		
 	}
 	
-	public static void changeToAdminMain() {
-		login.setVisib(false);
-		userReg.setVisib(false);
+	public static void changeToAdminMain() {		
 		adminMain.init();
 		adminMain.setVisib(true);
 		
 	}
 	
 	public static void changeToUserReg() {
-		login.setVisib(false);
-		adminMain.setVisib(false);
 		userReg.initialize();
 		userReg.setVisib(true);
+	}
+	public static void closeUserRegWindow(){
+		userReg.setVisib(false);
 	}
 	
 	public static void changeToUserMainWindow() {
@@ -49,6 +46,13 @@ public class WindowHandler extends JFrame {
 		
 		//theater1r1.init();
 		//theater1r1.setVisible(true);
+	}
+	public static void changeMovieAddWindow(){
+		addMovie.initialize();
+		addMovie.setVisib(true);
+	}
+	public static void closeMovieAddWindow(){
+		addMovie.setVisib(false);
 	}
 	
 	public static void changeToTheater1Room1() {
@@ -79,5 +83,4 @@ public class WindowHandler extends JFrame {
 	public static void serReservationId(int das) {
 		sessionReservation.setReservationId(das);
 	}
-		
 }

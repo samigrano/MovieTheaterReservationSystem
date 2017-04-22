@@ -29,7 +29,7 @@ public class LoginWindow extends JFrame {
 		loginFrame.getContentPane().setLayout(null);
 
 		JPanel loginPanel = new JPanel();
-		loginPanel.setBounds(105, 90, 333, 191);
+		loginPanel.setBounds(23, 21, 250, 200);
 		loginFrame.getContentPane().add(loginPanel);
 
 		loginPanel.setVisible(true);
@@ -41,6 +41,7 @@ public class LoginWindow extends JFrame {
 
 
 		userNameField = new JTextField();
+		userNameField.setText("admin");
 		userNameField.setBounds(11, 44, 106, 20);
 		loginPanel.add(userNameField);
 		userNameField.setColumns(10);
@@ -80,13 +81,13 @@ public class LoginWindow extends JFrame {
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setBounds(11, 69, 86, 14);
 		loginPanel.add(lblPassword);
-		loginFrame.setBounds(100, 100, 720, 480);
+		loginFrame.setBounds(100, 100, 350, 350);
 
 
 	}
 	
 	public void setVisib(Boolean visible) {
 		loginFrame.setVisible(visible);
-		loginFrame.setBounds(100, 100, 720, 480);
+		loginFrame.setBounds(100, 100, 200, 250);
 	}
 }

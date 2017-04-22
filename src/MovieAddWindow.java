@@ -186,13 +186,23 @@ public class MovieAddWindow {
 		JLabel lblMin = new JLabel("min");
 		lblMin.setBounds(90, 319, 46, 14);
 		panel.add(lblMin);
+		
+		JButton btnCloseWindow = new JButton("Close Window");
+		btnCloseWindow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				WindowHandler.closeMovieAddWindow();
+				AdminMainWindow.setAddMovieBtnTrue();
+			}
+		});
+		btnCloseWindow.setBounds(122, 419, 129, 23);
+		panel.add(btnCloseWindow);
 
 		frame.setBounds(100, 100, 720, 480);
 	}
 	
 	public void setVisib(Boolean visib) {
 		frame.setVisible(visib);
-		frame.setBounds(100, 100, 720, 480);
+		frame.setBounds(820, 300, 720, 480);
 	}
 	
 }
