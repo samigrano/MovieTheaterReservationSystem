@@ -9,11 +9,13 @@ public class WindowHandler extends JFrame {
 	private static UserMainWindow userMain =  new UserMainWindow();
 	private static Theater1room1 theater1r1 = new Theater1room1();
 	private static Reservation sessionReservation = new Reservation();
+	private static ReservationHandler reserVationHandler = new ReservationHandler();
 	
 	
 	public static void main (String[] args) {
 		MovieHandler.serializeMovieList();
 		MovieHandler.deSerializeMovieList();
+		reserVationHandler.deSerializeReservationsList();
 		login.init();
 		login.setVisib(true);
 		//adminMain.init();
@@ -58,6 +60,8 @@ public class WindowHandler extends JFrame {
 	public static void changeToTheater1Room1() {
 		
 		theater1r1.setVisible(true);
+		reserVationHandler.deSerializeReservationsList();
+		Theater1room1.checkReservedSeats();
 	}
 	
 	public static void setReservationUserName(String das) {
@@ -82,5 +86,19 @@ public class WindowHandler extends JFrame {
 	
 	public static void serReservationId(int das) {
 		sessionReservation.setReservationId(das);
+	}
+	
+	public static void setReservationSeat(int das) {
+		sessionReservation.seatNumbers.add(das);
+		System.out.println("Sessionreservation seat set: "+das);
+	}
+	
+	public static void conFirmReservation() {
+		reserVationHandler.deSerializeReservationsList();
+		reserVationHandler.reservations.add(sessionReservation);
+		System.out.println(reserVationHandler.reservations.size());
+		System.out.println("resever "+sessionReservation.seatNumbers.size());
+		reserVationHandler.serializeReservationList();
+		System.out.println("Reservation confirmed");
 	}
 }

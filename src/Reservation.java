@@ -1,14 +1,15 @@
 import java.util.ArrayList;
 
-public class Reservation {
+public class Reservation implements java.io.Serializable {
 	
 	private int reservationId;
 	private String sessionUserName;
 	private String movieName;
 	private int theaterNum;
 	private int roomNum;
+	static String moviedas;
 	
-	static ArrayList<Integer> seatNumbers = new ArrayList<>();
+	public ArrayList<Integer> seatNumbers = new ArrayList<>();
 
 	public int getReservationId() {
 		return reservationId;
@@ -40,6 +41,7 @@ public class Reservation {
 
 	public void setMovieName(String movieName) {
 		this.movieName = movieName;
+		this.moviedas = movieName;
 	}
 
 	public void setTheaterNum(int theaterNum) {

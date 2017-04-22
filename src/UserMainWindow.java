@@ -106,7 +106,13 @@ public class UserMainWindow {
 				WindowHandler.setRervationMovieName(MovieHandler.movies.get(0).getMovieName());
 				WindowHandler.setReservationTheaterNum(MovieHandler.movies.get(0).getTheaterNum());
 				WindowHandler.setReservationRoomNum(MovieHandler.movies.get(0).getRoomNum());
-				WindowHandler.changeToTheater1Room1();
+				
+				if (MovieHandler.movies.get(0).getTheaterNum() == 1) {
+					WindowHandler.changeToTheater1Room1();
+				}
+				
+				
+			
 			}
 		});
 		movie1Button.setBounds(10, 122, 200, 23);
@@ -115,6 +121,15 @@ public class UserMainWindow {
 		JButton movie2Button = new JButton("New button");
 		movie2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				WindowHandler.setRervationMovieName(MovieHandler.movies.get(1).getMovieName());
+				WindowHandler.setReservationTheaterNum(MovieHandler.movies.get(1).getTheaterNum());
+				WindowHandler.setReservationRoomNum(MovieHandler.movies.get(1).getRoomNum());
+				
+				if (MovieHandler.movies.get(0).getTheaterNum() == 1) {
+					WindowHandler.changeToTheater1Room1();
+				}
+				
 			}
 		});
 		movie2Button.setBounds(255, 122, 200, 23);
@@ -123,6 +138,14 @@ public class UserMainWindow {
 		JButton movie3Button = new JButton("New button");
 		movie3Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				WindowHandler.setRervationMovieName(MovieHandler.movies.get(2).getMovieName());
+				WindowHandler.setReservationTheaterNum(MovieHandler.movies.get(2).getTheaterNum());
+				WindowHandler.setReservationRoomNum(MovieHandler.movies.get(2).getRoomNum());
+				
+				if (MovieHandler.movies.get(0).getTheaterNum() == 1) {
+					WindowHandler.changeToTheater1Room1();
+				}
+				
 			}
 		});
 		movie3Button.setBounds(502, 122, 200, 23);

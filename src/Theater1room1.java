@@ -83,6 +83,7 @@ public class Theater1room1 extends JFrame {
 		addSeatsLoop();
 		setFreeSeats(100);
 		setReservedSeats(0);
+		
 
 //////////////FREE SEATS/////////////////////////
 		
@@ -115,8 +116,7 @@ public class Theater1room1 extends JFrame {
 		confirm = new JButton("CONFIRM");
 		confirm.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// Tähän tulee joku ilmotus varatuista seteistä ja että lasku tulee perästä :D
-				System.exit(0);
+				WindowHandler.conFirmReservation();
 			}
 		});
 		confirm.setBounds(624, 474, 89, 23);
@@ -198,6 +198,7 @@ public class Theater1room1 extends JFrame {
 			((JButton)e.getSource()).setEnabled(false);
 			
 			
+			
 		}
 	}
 	
@@ -235,7 +236,7 @@ public class Theater1room1 extends JFrame {
 			l += 50;
 		}
 		
-		//31 - 40
+		//31-40
 		int m = 50;
 		for (int i = 31; i < 41; i++) {
 			TheaterSeatButton s = new TheaterSeatButton(i+"");
@@ -244,6 +245,17 @@ public class Theater1room1 extends JFrame {
 			contentPane.add(s);
 			s.setBounds(m, 160, 50, 50);
 			m += 50;
+		}
+		
+		//41-50
+		int n = 50;
+		for (int i = 41; i < 51; i++) {
+			TheaterSeatButton s = new TheaterSeatButton(i+"");
+			s.addActionListener(new MyActionListener());
+			seatButtons.add(s);
+			contentPane.add(s);
+			s.setBounds(n, 210, 50, 50);
+			n += 50;
 		}
 
 	}
@@ -1096,5 +1108,33 @@ public class Theater1room1 extends JFrame {
 		seat100.setBounds(500, 460, 50, 50);
 		contentPane.add(seat100);
 		seat100.addActionListener(new MyActionListener());
+	}
+	
+	public static void checkReservedSeats() {
+		System.out.println("Checking reserved seats");
+		try {
+			String currentMovie = Reservation.moviedas;
+			System.out.println(currentMovie);
+			for (int i = 0; i < ReservationHandler.reservations.size(); i++) {
+				System.out.println(ReservationHandler.reservations.get(i).getMovieName());
+				if (ReservationHandler.reservations.get(i).getMovieName().equals(currentMovie)) {
+					Reservation temp = ReservationHandler.reservations.get(i);
+					System.out.println(temp.getSessionUserName());
+					System.out.println(temp.seatNumbers.size());
+					for (int j = 0; j < temp.seatNumbers.size(); j++) {
+						System.out.println("PASDKA");
+						System.out.println(temp.seatNumbers.get(j));
+						
+						
+						int click = temp.seatNumbers.get(j);
+						System.out.println(click);
+						seatButtons.get(click-1).doClick();
+						
+					}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
